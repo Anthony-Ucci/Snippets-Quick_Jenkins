@@ -3,12 +3,6 @@
   hosts: all
   become: true
   tasks:
-    - name: Update
-      ansible.builtin.apt:
-        update_cache: true
-        cache_valid_time: 3600
-        upgrade: true
-
     - name: Install Java (OpenJDK 17)
       ansible.builtin.apt:
         name: openjdk-17-jre
@@ -30,6 +24,8 @@
     - name: Update apt cache
       ansible.builtin.apt:
         update_cache: true
+        cache_valid_time: 3600
+        upgrade: true
 
     - name: Installer Jenkins
       ansible.builtin.apt:

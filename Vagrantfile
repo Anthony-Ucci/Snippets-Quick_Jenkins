@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
             ansible.playbook = "jenkins/playbook.yml"
         end
 
+        # Change the keyboard layout to French (AZERTY)
         ubuntu.vm.provision "shell", inline: 
         <<-SHELL
             sudo sed -i 's/XKBLAYOUT="us"/XKBLAYOUT="fr"/g' /etc/default/keyboard

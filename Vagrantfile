@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
         ubuntu.vm.box = "bento/ubuntu-24.04"
         ubuntu.vm.box_version = "202502.21.0"
         ubuntu.vm.hostname = "Jenkins"
-        config.vm.network "private_network", ip: "192.168.56.10"
+        ubuntu.vm.network "private_network", ip: "192.168.56.10"
 
 
         ubuntu.vm.provision "ansible" do |ansible|

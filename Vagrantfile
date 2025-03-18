@@ -7,10 +7,16 @@ Vagrant.configure("2") do |config|
         ubuntu.vm.hostname = "Jenkins"
         ubuntu.vm.network "private_network", ip: "192.168.56.10"
 
+        ubuntu.vm.provider "virtualbox" do |vb|
+            vb.name = "Jenkins"
+            vb.memory = 1024
+            vb.cpus = 2
+        end
+
 
         ubuntu.vm.provision "ansible" do |ansible|
             ansible.compatibility_mode = "2.0"
-            ansible.playbook = "jenkins/playbook.yml"
+            ansible.playbook = "playbook.yml"
         end
 
         # Change the keyboard layout to French (AZERTY)

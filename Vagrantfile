@@ -13,18 +13,9 @@ Vagrant.configure("2") do |config|
             vb.cpus = 2
         end
 
-
         ubuntu.vm.provision "ansible" do |ansible|
             ansible.compatibility_mode = "2.0"
             ansible.playbook = "playbook.yml"
         end
-
-        # Change the keyboard layout to French (AZERTY)
-        ubuntu.vm.provision "shell", inline: 
-        <<-SHELL
-            sudo sed -i 's/XKBLAYOUT="us"/XKBLAYOUT="fr"/g' /etc/default/keyboard
-            sudo dpkg-reconfigure -f noninteractive keyboard-configuration
-            sudo service keyboard-setup restart
-        SHELL
     end
   end
